@@ -1,0 +1,134 @@
+:root {
+  --red: #ff9595;
+  --dark-red: #ea6161;
+  --orange: #ffdba4;
+  --yellow: #ffe9ae;
+  --blue: #97e5ff;
+  --dark-blue: #5ac6ea;
+  --tileSize: 100px;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  /* animation-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
+    animation-duration: 0.2s; */
+}
+
+h1:hover {
+  /* font-size: 3.1rem; */
+  transform: scale(1.1);
+}
+
+body {
+  background-color: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  font-family: "Permanent Marker", cursive, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.title-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  background-color: var(--blue);
+  border-radius: 4px;
+}
+
+.title-highlight:hover {
+  background-color: var(--red);
+}
+
+button {
+  background-color: var(--blue);
+  font-family: "Permanent Marker", cursive, Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  color: white;
+  font-size: x-large;
+  border: none;
+  box-shadow: 0 5px var(--dark-blue);
+}
+
+button:hover {
+  /* border: 1px solid white; */
+  background-color: var(--red);
+  box-shadow: 0 5px var(--dark-red);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: var(--tileSize) var(--tileSize) var(--tileSize);
+  grid-template-rows: var(--tileSize) var(--tileSize) var(--tileSize);
+  margin: 20px;
+}
+
+.player-container {
+  display: flex;
+  margin-top: 20px;
+  gap: 40px;
+  font-size: 1.5rem;
+  color: white;
+  /* border: 1px solid red; */
+}
+
+.tile {
+  /* width: 50px;
+    height: 50px; */
+  background-color: white;
+  border: 2px solid var(--orange);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-radius: 4px;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+  /* font-size: 4.5rem; */
+}
+
+.player-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 50%; */
+  height: 2rem;
+  border-radius: 4px;
+  width: 110px;
+  /* border: 1px solid red; */
+}
+
+
+.one {
+  background-color: var(--blue);
+  
+}
+
+.two {
+  background-color: var(--red);
+}
+
+.turn {
+  border: 10px solid white;
+}
