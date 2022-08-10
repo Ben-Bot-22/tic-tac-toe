@@ -119,16 +119,22 @@ button:hover {
   /* border: 1px solid red; */
 }
 
+.x {
+  color: var(--blue);
+}
+
+.o {
+  color: var(--red);
+}
 
 .one {
   background-color: var(--blue);
-  
 }
 
 .two {
   background-color: var(--red);
 }
 
-.turn {
+.active-turn {
   border: 10px solid white;
 }
