@@ -3,6 +3,15 @@
 let gameBoard = (function () {
   let gameBoardArray = Array(9).fill("");
   const tiles = document.querySelectorAll(".tile");
+  const restart = document.querySelector(".restart");
+  restart.addEventListener("click", resetBoard);
+  function resetBoard() {
+    for (let i = 0; i < gameBoardArray.length; i++) {
+      gameBoardArray[i] = "";
+    };
+    console.log(gameBoardArray);
+    fillBoard();
+  }
   const fillBoard = function () {
     for (let i = 0; i < tiles.length; i++) {
       // console.log(tiles[i]);
@@ -18,11 +27,9 @@ let gameBoard = (function () {
       }
     }
   };
-
   tiles.forEach((tile) => {
     tile.addEventListener("click", addMarker);
   });
-
   function addMarker(e) {
     // if tile is empty
     if (gameBoardArray[e.target.id] === "") {
@@ -51,7 +58,6 @@ let gameBoard = (function () {
       }
     }
   }
-
   return {
     fillBoard: fillBoard,
     addMarker: addMarker,
@@ -59,6 +65,7 @@ let gameBoard = (function () {
         return gameBoardArray; }
   };
 })();
+
 
 let displayController = (function () {
   let currentPlayer = 1;
@@ -84,7 +91,6 @@ let displayController = (function () {
     else if (playerTwoWin) return 2;
     else return -1;
   }
-
   function testMarkerWin(marker) {
     // [0][1][2]  [3][4][5]  [6][7][8]
     //  Rows       0,1,2 || 3,4,5 || 6,7,8
@@ -126,6 +132,7 @@ let displayController = (function () {
   };
 })();
 
+
 const playerFactory = (name, marker) => {
   // const sayHello = () => console.log('hello!');
   return { name, marker, element };
@@ -137,30 +144,8 @@ const playerFactory = (name, marker) => {
 TODO:
 
 Input name 
-include a button to start/restart 
 On game over add a display element that congratulates winner
 Add confetti
-
 Scaling smoothly
-Tic tac toe wave (go down when hover over 1 of words)
 
-Optional - If you’re feeling ambitious create an AI so that a player can play against the computer!
-Start by just getting the computer to make a random legal move.
-Once you’ve gotten that, work on making the computer smart. It is possible to create an unbeatable 
-AI using the minimax algorithm (read about it here, some googling will help you out with this one)
-If you get this running definitely come show it off in the chatroom. It’s quite an accomplishment!
-
-
-****************************************************************
-
-You’re going to store the gameboard as an array inside of a Gameboard object, 
-so start there! Your players are also going to be stored in objects… and you’re 
-probably going to want an object to control the flow of the game itself.
-    Your main goal here is to have as little global code as possible. 
-    Try tucking everything away inside of a module or factory.
-    Rule of thumb: if you only ever need ONE of something (gameBoard, displayController), use a module. 
-    If you need multiples of something (players!), create them with factories.
-
-Set up your HTML and write a JavaScript function that will render the contents of the 
-gameboard array to the webpage (for now you can just manually fill in the array with "X"s and "O"s)
 */
