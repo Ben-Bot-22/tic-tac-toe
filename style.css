@@ -1,7 +1,7 @@
 :root {
   --red: #ff9595;
   --dark-red: #ea6161;
-  --orange: #ffdba4;
+  --orange: #ffcd81;
   --yellow: #ffe9ae;
   --blue: #97e5ff;
   --dark-blue: #5ac6ea;
@@ -59,6 +59,7 @@ button {
   font-size: x-large;
   border: none;
   box-shadow: 0 5px var(--dark-blue);
+  margin-top: 10px;
 }
 
 button:hover {
@@ -71,13 +72,12 @@ button:hover {
   display: grid;
   grid-template-columns: var(--tileSize) var(--tileSize) var(--tileSize);
   grid-template-rows: var(--tileSize) var(--tileSize) var(--tileSize);
-  margin: 20px;
+  margin: 0px;
 }
 
 .player-container {
   display: flex;
   margin-top: 20px;
-  gap: 40px;
   font-size: 1.5rem;
   color: white;
   /* border: 1px solid red; */
@@ -102,6 +102,7 @@ button:hover {
 }
 
 .player-container {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -117,6 +118,20 @@ button:hover {
   border-radius: 4px;
   width: 110px;
   /* border: 1px solid red; */
+}
+
+input {
+  border: none;
+  font-family: "Permanent Marker", cursive, Arial, Helvetica, sans-serif;
+  background: transparent;
+  font-size: large;
+  width: 100%;
+  padding-left: 10px;
+  color: white;
+}
+
+input::placeholder {
+  color: white;
 }
 
 .x {
@@ -137,4 +152,21 @@ button:hover {
 
 .active-turn {
   border: 10px solid white;
+}
+
+.win-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: var(--blue);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+#win-message {
+  color: white;
+  font-size: xx-large;
+  /* border: 1px solid white; */
 }

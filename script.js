@@ -1,5 +1,3 @@
-// add on click event listener to tiles
-
 let gameBoard = (function () {
   let gameBoardArray = Array(9).fill("");
   const tiles = document.querySelectorAll(".tile");
@@ -9,8 +7,8 @@ let gameBoard = (function () {
     for (let i = 0; i < gameBoardArray.length; i++) {
       gameBoardArray[i] = "";
     };
-    console.log(gameBoardArray);
     fillBoard();
+    displayController.resetWinMessage();
   }
   const fillBoard = function () {
     for (let i = 0; i < tiles.length; i++) {
@@ -45,17 +43,7 @@ let gameBoard = (function () {
       displayController.nextTurn();
       const winner = displayController.testGameOver();
       console.log("winner " + winner);
-      if (winner === 1) {
-        console.log("playerOne wins")
-      }
-      else if (winner === 2)
-      {
-        console.log("playerTwo wins")
-      }
-      else if (winner === 0)
-      {
-        console.log('Tie');
-      }
+      displayController.displayWinMessage(winner);
     }
   }
   return {
@@ -66,11 +54,12 @@ let gameBoard = (function () {
   };
 })();
 
-
 let displayController = (function () {
   let currentPlayer = 1;
   const playerOne = document.getElementById("player-one");
   const playerTwo = document.getElementById("player-two");
+  const winMessage = document.getElementById("win-message");
+  const winMessageContainer = document.querySelector(".win-container");
   // switch to next player
   function nextTurn() {
     if (currentPlayer === 1) {
@@ -83,6 +72,11 @@ let displayController = (function () {
       currentPlayer = 1;
     } // move highlight on UI
   }
+  function resetCurrentPlayer() {
+    if (currentPlayer === 2) {
+      nextTurn();
+    }
+  }
   function testGameOver() {
     const playerOneWin = testMarkerWin('X');
     const playerTwoWin = testMarkerWin('O');
@@ -90,6 +84,26 @@ let displayController = (function () {
     else if (playerOneWin) return 1;
     else if (playerTwoWin) return 2;
     else return -1;
+  }
+  function displayWinMessage(winner) {
+    if (winner === 1) {
+      winMessage.innerHTML = "Player 1 wins! 🎉";
+      winMessageContainer.style.backgroundColor = "var(--blue)";
+    }
+    else if (winner === 2)
+    {
+      winMessage.innerHTML = "Player 2 wins! 🎉"
+      winMessageContainer.style.backgroundColor = "var(--red)";
+    }
+    else if (winner === 0)
+    {
+      winMessage.innerHTML = "Draw!"
+      winMessageContainer.style.backgroundColor = "var(--orange)";
+    }
+    if (winner !== -1) resetCurrentPlayer();
+  }
+  function resetWinMessage() {
+    winMessage.innerHTML = "";
   }
   function testMarkerWin(marker) {
     // [0][1][2]  [3][4][5]  [6][7][8]
@@ -129,23 +143,8 @@ let displayController = (function () {
       return currentPlayer;
     },
     testGameOver: testGameOver,
+    displayWinMessage: displayWinMessage,
+    resetWinMessage: resetWinMessage,
   };
 })();
 
-
-const playerFactory = (name, marker) => {
-  // const sayHello = () => console.log('hello!');
-  return { name, marker, element };
-};
-
-// gameBoard.fillBoard();
-
-/*
-TODO:
-
-Input name 
-On game over add a display element that congratulates winner
-Add confetti
-Scaling smoothly
-
-*/
