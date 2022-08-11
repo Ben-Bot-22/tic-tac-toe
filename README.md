@@ -21,7 +21,7 @@ User plays tic tac toe against self.  The primary learning objective is to learn
 ### Links
 
 - Solution URL: [Code on GitHub](https://github.com/Ben-Bot-22/tic-tac-toe)
-- Live Site URL: [GitHub pages live URL](https://ben-bot-22.github.io/rock-paper-scissors/)
+- Live Site URL: [GitHub pages live URL](https://ben-bot-22.github.io/tic-tac-toe/)
 
 ## My process
 
